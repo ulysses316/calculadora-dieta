@@ -8,16 +8,37 @@ const FAFBennedict = document.querySelector('#faf-value-benedict');
 const FAFMifflin = document.querySelector('#faf-value-mifflin');
 const idealWeight = document.querySelector("#ideal-weight");
 const adjustedWeight = document.querySelector("#adjusted-weight");
+const tableSection = document.querySelector(".table-section");
 
 
 const calcIMC = (weight, size) => {
     return weight / ((size / 100) * (size / 100));
 }
 
-const calcBenedict = (weight, size, age, gender) => { }
-const calcMifflin = (weight, size, age, gender) => { }
-const calcETA = (calcForm) => { return calcForm*0.1 }
-const calcFAF = () => { }
+const calcBenedict = (weight, size, age, gender) => {
+    if (gender === "Masculino"){
+        return 66.5+(13.75*weight)+(5*size)-(6.78*age);
+    }
+    else{
+        return 655+(9.6*weight)+(1.85*size)-(4.68*age);
+    }
+}
+const calcMifflin = (weight, size, age, gender) => {
+    if (gender === "Masculino"){
+        return (10*weight) + (6.25*size) - (5*age) + 5;
+    }
+    else{
+        return (10*weight) + (6.25*size) - (5*age) - 161;
+    }
+}
+const calcETA = (tmb) => { return tmb*0.1 }
+
+const calcFAF = (tmb,faf) => {
+    if (faf === 1){}
+    else if (faf === 2){}
+    else {}
+}
+
 const calcWeight = (weight, size) =>{
     return {
         pesoIdeal: size-100,
@@ -26,6 +47,7 @@ const calcWeight = (weight, size) =>{
 }
 
 IMCButton.addEventListener('click', () => {
+    tableSection.style.display = "block"
     const age = document.querySelector('#age').value;
     const size = document.querySelector('#size').value;
     const weight = document.querySelector('#weight').value;
@@ -36,9 +58,14 @@ IMCButton.addEventListener('click', () => {
     
     // Calculos
     const weights = calcWeight(weight, size);
-    
+    const benedictResult = calcBenedict(weight, size, age, gender);
+    const mifflinResult = calcMifflin(weight, size, age, gender);
     // variales de resultado
     IMCValue.innerHTML = IMC.toFixed(2);
     idealWeight.innerHTML = weights.pesoIdeal;
     adjustedWeight.innerHTML = weights.pesoAjustado;
+    benedict.innerHTML = benedictResult;
+    mifflin.innerHTML = mifflinResult;
+    ETABennedict.innerHTML = calcETA(benedictResult)
+    ETAMifflin.innerHTML = calcETA(mifflinResult)
 })
