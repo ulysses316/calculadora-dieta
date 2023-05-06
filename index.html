@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Calculadora de dieta</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -21,12 +21,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> -->
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -64,7 +64,13 @@
                     </label>
                 </div>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
+            <label for="physical-activity" class="form-label">Actividad fisica</label>
+            <select id="physical-activity" class="form-select">
+                <option value="1">Poca</option>
+                <option value="2">Moderada</option>
+                <option value="3">Mucha</option>
+            </select>
+            <div class="d-flex justify-content-center align-items-center mt-5">
                 <button id="submit" type="button" class="btn btn-primary">Enviar</button>
             </div>
         </section>
@@ -81,10 +87,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td id="imc-value-benedict" class="text-center" ></td>
-                        <td class="text-center" >1</td>
-                        <td class="text-center" >1</td>
-                        <td class="text-center" >1</td>
+                        <td id="imc-value-benedict" class="text-center"></td>
+                        <td id="value-benedict" class="text-center"></td>
+                        <td id="eta-value-benedict" class="text-center"></td>
+                        <td id="faf-value-benedict" class="text-center"></td>
                     </tr>
                 </tbody>
             </table>
@@ -100,10 +106,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td id="imc-value-mifflin" class="text-center" >1</td>
-                        <td class="text-center" >1</td>
-                        <td class="text-center" >1</td>
-                        <td class="text-center" >1</td>
+                        <td id="imc-value-mifflin" class="text-center"></td>
+                        <td id="value-mifflin" class="text-center"></td>
+                        <td id="eta-value-mifflin" class="text-center"></td>
+                        <td id="faf-value-mifflin" class="text-center"></td>
                     </tr>
                 </tbody>
             </table>
