@@ -9,6 +9,8 @@ const FAFMifflin = document.querySelector('#faf-value-mifflin');
 const idealWeight = document.querySelector("#ideal-weight");
 const adjustedWeight = document.querySelector("#adjusted-weight");
 const tableSection = document.querySelector(".table-section");
+const benedictTotalValue = document.querySelector("#benedict-total-value");
+const mifflinTotalValue = document.querySelector("#mifflin-total-value");
 
 
 const calcIMC = (weight, size) => {
@@ -17,32 +19,34 @@ const calcIMC = (weight, size) => {
 
 const calcBenedict = (weight, size, age, gender) => {
     if (gender === "Masculino"){
-        return 66.5+(13.75*weight)+(5*size)-(6.78*age);
+        return Math.round(66.5+(13.75*weight)+(5*size)-(6.78*age));
     }
     else{
-        return 655+(9.6*weight)+(1.85*size)-(4.68*age);
+        return Math.round(655+(9.6*weight)+(1.85*size)-(4.68*age));
     }
 }
 const calcMifflin = (weight, size, age, gender) => {
     if (gender === "Masculino"){
-        return (10*weight) + (6.25*size) - (5*age) + 5;
+        return Math.round((10*weight) + (6.25*size) - (5*age) + 5);
     }
     else{
-        return (10*weight) + (6.25*size) - (5*age) - 161;
+        return Math.round((10*weight) + (6.25*size) - (5*age) - 161);
     }
 }
-const calcETA = (tmb) => { return tmb*0.1 }
+const calcETA = (tmb) => { return Math.round(tmb*0.1) }
 
 const calcFAF = (tmb,faf) => {
-    if (faf === 1){}
-    else if (faf === 2){}
-    else {}
+    console.log(tmb,faf);
+    if (faf === "1"){return Math.round(tmb*0.15)}
+    else if (faf === "2"){return Math.round((tmb*1.3)-tmb)}
+    else if (faf === "3"){return Math.round(tmb*0.45)}
+    else{return Math.round(tmb*0.60)}
 }
 
 const calcWeight = (weight, size) =>{
     return {
-        pesoIdeal: size-100,
-        pesoAjustado: ((weight-(size-100))*0.25)+(size-100)
+        pesoIdeal: Math.round(size-100),
+        pesoAjustado: Math.round(((weight-(size-100))*0.25)+(size-100))
     }
 }
 
@@ -60,6 +64,8 @@ IMCButton.addEventListener('click', () => {
     const weights = calcWeight(weight, size);
     const benedictResult = calcBenedict(weight, size, age, gender);
     const mifflinResult = calcMifflin(weight, size, age, gender);
+    const benedictFAFResult = calcFAF(benedictResult, faf);
+    const mifflinFAFResult = calcFAF(mifflinResult, faf);
     // variales de resultado
     IMCValue.innerHTML = IMC.toFixed(2);
     idealWeight.innerHTML = weights.pesoIdeal;
@@ -68,4 +74,8 @@ IMCButton.addEventListener('click', () => {
     mifflin.innerHTML = mifflinResult;
     ETABennedict.innerHTML = calcETA(benedictResult)
     ETAMifflin.innerHTML = calcETA(mifflinResult)
+    FAFBennedict.innerHTML = benedictFAFResult;
+    FAFMifflin.innerHTML = mifflinFAFResult;
+    benedictTotalValue.innerHTML = (benedictResult + calcETA(benedictResult) + benedictFAFResult);
+    mifflinTotalValue.innerHTML = (mifflinResult + calcETA(mifflinResult) + mifflinFAFResult);
 })

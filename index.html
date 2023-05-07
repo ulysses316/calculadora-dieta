@@ -12,7 +12,7 @@
 
 <style>
     th{
-        width: 33.33%;
+        width: 25%;
     }
 
     .table-section{
@@ -76,9 +76,10 @@
             </div>
             <label for="physical-activity" class="form-label">Actividad fisica</label>
             <select id="physical-activity" class="form-select">
-                <option value="1">Poca</option>
-                <option value="2">Moderada</option>
-                <option value="3">Mucha</option>
+                <option value="1">Nula</option>
+                <option value="2">Poca</option>
+                <option value="3">Moderada</option>
+                <option value="4">Mucha</option>
             </select>
             <div class="d-flex justify-content-center align-items-center mt-5">
                 <button id="submit" type="button" class="btn btn-primary">Enviar</button>
@@ -89,16 +90,16 @@
             <table class="table mt-5 mb-5">
                 <thead>
                     <tr>
-                        <th class="text-center" scope="col">IMC</th>
-                        <th class="text-center" scope="col">Peso Ideal</th>
-                        <th class="text-center" scope="col">P. Ajustado</th>
+                        <th style="width: 33.33%;" class="text-center" scope="col">IMC</th>
+                        <th style="width: 33.33%;" class="text-center" scope="col">Peso Ideal</th>
+                        <th style="width: 33.33%;" class="text-center" scope="col">P. Ajustado</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td id="imc-value" class="text-center"></td>
-                        <td id="ideal-weight" class="text-center"></td>
-                        <td id="adjusted-weight" class="text-center"></td>
+                        <td style="width: 33.33%;" id="imc-value" class="text-center"></td>
+                        <td style="width: 33.33%;" id="ideal-weight" class="text-center"></td>
+                        <td style="width: 33.33%;" id="adjusted-weight" class="text-center"></td>
                     </tr>
                 </tbody>
             </table>
@@ -110,6 +111,7 @@
                         <th class="text-center" scope="col">Benedict</th>
                         <th class="text-center" scope="col">ETA</th>
                         <th class="text-center" scope="col">FAF</th>
+                        <th class="text-center" scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,6 +119,7 @@
                         <td id="value-benedict" class="text-center"></td>
                         <td id="eta-value-benedict" class="text-center"></td>
                         <td id="faf-value-benedict" class="text-center"></td>
+                        <td id="benedict-total-value" class="text-center"></td>
                     </tr>
                 </tbody>
             </table>
@@ -127,6 +130,7 @@
                         <th class="text-center" scope="col">Mifflin</th>
                         <th class="text-center" scope="col">ETA</th>
                         <th class="text-center" scope="col">FAF</th>
+                        <th class="text-center" scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,6 +138,8 @@
                         <td id="value-mifflin" class="text-center"></td>
                         <td id="eta-value-mifflin" class="text-center"></td>
                         <td id="faf-value-mifflin" class="text-center"></td>
+                        <td id="mifflin-total-value" class="text-center"></td>
+                        
                     </tr>
                 </tbody>
             </table>
