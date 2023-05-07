@@ -36,7 +36,6 @@ const calcMifflin = (weight, size, age, gender) => {
 const calcETA = (tmb) => { return Math.round(tmb*0.1) }
 
 const calcFAF = (tmb,faf) => {
-    console.log(tmb,faf);
     if (faf === "1"){return Math.round(tmb*0.15)}
     else if (faf === "2"){return Math.round((tmb*1.3)-tmb)}
     else if (faf === "3"){return Math.round(tmb*0.45)}
